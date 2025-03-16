@@ -7,15 +7,31 @@
   
   // Function to check if user is logged in
   function checkLoginStatus() {
-    // This is a simplified example - you'll need to adapt this
-    // to match how lobocl.online indicates a successful login
+    // Check various indicators that might signal successful login
     const isLoggedIn = 
-      document.querySelector('.logged-in-indicator') || // Example selector
-      document.querySelector('.dashboard-link') || // Example selector
-      document.querySelector('.admin-panel') || // Example selector
-      window.location.href.includes('/admin') || // Check URL
-      document.cookie.includes('auth=') || // Check cookies
-      localStorage.getItem('auth_token'); // Check localStorage
+      // Check for common login success indicators
+      document.querySelector('.logged-in-indicator') || 
+      document.querySelector('.dashboard-link') || 
+      document.querySelector('.admin-panel') || 
+      document.querySelector('.user-profile') ||
+      document.querySelector('.logout-button') ||
+      
+      // Check URL patterns that indicate successful login
+      window.location.href.includes('/admin') || 
+      window.location.href.includes('/dashboard') ||
+      window.location.href.includes('/account') ||
+      window.location.href.includes('/profile') ||
+      
+      // Check for authentication cookies or tokens
+      document.cookie.includes('auth=') || 
+      document.cookie.includes('session=') ||
+      document.cookie.includes('token=') ||
+      document.cookie.includes('logged_in=') ||
+      
+      // Check localStorage for auth tokens
+      localStorage.getItem('auth_token') ||
+      localStorage.getItem('token') ||
+      localStorage.getItem('user');
     
     return isLoggedIn;
   }

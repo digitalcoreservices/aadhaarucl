@@ -1,36 +1,29 @@
 "use client";
-import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Updated to next/navigation
-import LoginIframe from './LoginIframe';
+import { useRouter } from 'next/navigation';
 import { useLoginModal } from '@/contexts/LoginModalContext';
 
 const LoginButton = ({ className = "login-button" }) => {
-  // Use the global login modal context
-  const { isLoginModalOpen, setIsLoginModalOpen } = useLoginModal();
-  const router = useRouter(); // Next.js router
+  const { setIsLoginModalOpen } = useLoginModal();
+  const router = useRouter();
 
   const handleLoginClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // Toggle modal visibility if needed
-    setIsLoginModalOpen(true);
+    // Redirect to lobocl.online in the same tab
+    window.location.href = "https://lobocl.online/";
+    
+    // Set login time for tracking purposes
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mahaekendraLoginTime", Date.now().toString());
+    }
   };
 
   return (
-    <>
-      <button 
-        onClick={handleLoginClick}
-        className={className}
-      >
-        Login
-      </button>
-
-      <LoginIframe 
-        isOpen={isLoginModalOpen} 
-        onClose={() => setIsLoginModalOpen(false)} 
-        // If you need to navigate after closing, use router.push instead
-        // onAfterClose={() => router.push('/dashboard')}
-      />
-    </>
+    <button 
+      onClick={handleLoginClick}
+      className={className}
+    >
+      Login
+    </button>
   );
 };
 

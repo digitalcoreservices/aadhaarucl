@@ -65,7 +65,7 @@ const LoginIframe = ({ isOpen, onClose }) => {
         </button>
         <iframe 
           ref={iframeRef}
-          src="https://lobocl.online" 
+          src="/api/proxy" 
           className={styles.iframe}
           title="Login"
           allow="fullscreen; microphone; camera; payment; clipboard-read; clipboard-write; storage-access; cross-origin-isolated"
